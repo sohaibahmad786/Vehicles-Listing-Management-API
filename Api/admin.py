@@ -6,7 +6,13 @@ from .models import Students
 from .models import Task
 from .models import Booking
 from .models import Message
+from .models import Person
+from .models import Company
+from .models import Cars
 
+admin.site.register(Cars)
+admin.site.register(Company)
+admin.site.register(Person)
 admin.site.register(Message)
 admin.site.register(Booking)
 admin.site.register(Task)

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from .views import Register_view,Register_detail
 from .views import Search_view
@@ -6,6 +6,15 @@ from .views import Studentlist,Studentdetail
 from .views import Task_listview,Task_detailview
 from .views import Bookinglistview,AvailableSlotView
 from .views import MessagelistView,Chatlistview
+from .views import PersonViewSet
+from .views import CompanyView
+from .views import CarView
+from rest_framework.routers import DefaultRouter
+
+router=DefaultRouter()
+router.register('person',PersonViewSet)
+router.register('company',CompanyView)
+router.register('car',CarView)
 
 urlpatterns = [
    path('register/',Register_view.as_view()),
@@ -21,4 +30,5 @@ urlpatterns = [
    path('available/',AvailableSlotView.as_view()),
    path('message/',MessagelistView.as_view()),
    path('chat/',Chatlistview.as_view()),
+   path('',include(router.urls)),
 ]
